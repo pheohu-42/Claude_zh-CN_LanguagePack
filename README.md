@@ -16,6 +16,7 @@
 5. 打开 Claude ，在左下角设置中切换语言为中文
 
 开启Claude 3P模式与自定义推理端点：https://linux.do/t/topic/2032192
+
 使用自定义模型映射：https://linux.do/t/topic/2034445 
 
 ## 快速卸载
@@ -56,7 +57,7 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 ```
 ├── 安装中文语言包.bat                  # 一键安装入口
 ├── 卸载中文语言包.bat                  # 一键卸载入口
-├── LanguagePack.ps1                    # 主脚本（install/uninstall/extract）
+├── LanguagePack.ps1                    # 主脚本
 └── translated-zh-CN/                   # 翻译文件
     ├── ion-dist/zh-CN.json             # 主界面 (12,325 条)
     ├── desktop-shell/zh-CN.json        # 桌面外壳 (355 条)
@@ -87,5 +88,6 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 仅供个人学习使用。Claude Desktop 是 Anthropic 的产品，本项目与 Anthropic 无关。
 
 ## 鸣谢
-简体中文包原型：https://linux.do/t/topic/2040184 by [RICK](https://linux.do/u/lbls888)
-Linux Do 社区：https://linux.do。学AI，上L站。
+- 简体中文包原型：https://linux.do/t/topic/2040184 by [RICK](https://linux.do/u/lbls888)
+
+- Linux Do 社区：[![](https://ldo.betax.dev/badge/community)](https://linux.do/)。学AI，上L站。
