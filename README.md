@@ -1,6 +1,6 @@
 # Claude Desktop 简体中文语言包
 
-将 Claude Desktop (Windows) 的界面语言替换为简体中文。
+为 Claude Desktop (Windows) 的界面语言增加简体中文。已在 Claude 1.3883.0 的 Cowork 3P 模式测试可用。
 
 ## 前提
 
@@ -9,16 +9,18 @@
 
 ## 快速安装
 
-1. 双击 `安装中文语言包.bat`
-2. 在 UAC 弹窗中点击「是」
-3. 等待安装完成，Claude 会自动重启
-4. 如有需要，在 Claude 设置中确认语言已切换为中文
+1. 完全关闭 Claude Desktop
+2. 双击 `安装中文语言包.bat`。如果界面卡住，可以按几下回车键。
+3. 在 管理员权限 弹窗中点击「是」
+4. 等待安装完成
+5. 在 Claude 设置中将切换为中文
 
 ## 快速卸载
 
-1. 双击 `卸载中文语言包.bat`
-2. 在 UAC 弹窗中点击「是」
-3. 等待卸载完成，Claude 会自动重启
+1. 完全关闭 Claude Desktop
+2. 双击 `卸载中文语言包.bat`
+3. 在 管理员权限 弹窗中点击「是」
+4. 等待卸载完成
 
 ## 命令行用法（PowerShell）
 
@@ -38,7 +40,7 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 
 ## 工作原理
 
-安装脚本做三件事：
+安装脚本会做三件事：
 
 1. **写入翻译文件** — 将 `translated-zh-CN/` 下的 3 个 JSON 复制到 Claude 的 resources 目录
 2. **注册 zh-CN 语言** — 在 Claude 的 JS 包中补丁语言列表，添加 `"zh-CN"`
