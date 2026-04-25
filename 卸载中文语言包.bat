@@ -1,15 +1,18 @@
 @echo off
+setlocal
 set "SCRIPT=%~dp0LanguagePack.ps1"
+set "PS_EXE=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
 if not exist "%SCRIPT%" (
-    echo [错误] 未找到内部安装脚本
+    echo Internal installer script not found.
     pause
     exit /b 1
 )
-
-net session >nul 2>&1
-if %errorlevel% neq 0 (
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process PowerShell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""%SCRIPT%"" -Uninstall'"
-    exit /b
+if not exist "%PS_EXE%" set "PS_EXE=powershell.exe"
+"%PS_EXE%" -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT%" -Uninstall
+if errorlevel 1 (
+    echo.
+    echo Uninstaller script failed.
+    pause
+    exit /b 1
 )
-
-powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT%" -Uninstall
+endlocal

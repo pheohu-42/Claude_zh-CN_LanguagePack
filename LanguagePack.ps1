@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [switch]$Uninstall,
     [switch]$Extract,
@@ -373,7 +373,7 @@ function Install-LanguagePack {
         }
 
         $sizeKb = [math]::Floor((Get-Item -LiteralPath $item.Path).Length / 1KB)
-        Write-Host "  $($item.Name): OK (${sizeKb}KB)"
+        Write-Host ("  {0}: OK ({1}KB)" -f $item.Name, $sizeKb)
     }
 
     Write-Host ""
