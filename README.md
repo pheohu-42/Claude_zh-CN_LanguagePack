@@ -1,6 +1,8 @@
 # Claude Desktop 简体中文语言包
 
 为 Claude Desktop (Windows) 的界面语言增加简体中文。已在 Claude 1.3883.0 的 3P 模式测试可用。
+<img width="75%" alt="image" src="https://github.com/user-attachments/assets/16c330db-6df9-43ca-a333-61172057ad6e" />
+
 
 ## 前提
 
