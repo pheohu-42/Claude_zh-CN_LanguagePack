@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(python validate_chunk.py chunk_003.json translated_003.json)",
-      "Bash(python validate_chunk.py chunk_004.json translated_004.json)"
+      "Bash(python validate_chunk.py chunk_004.json translated_004.json)",
+      "Bash(python work/validate_chunk.py work/chunk_029.json work/translated_029.json)"
     ]
   }
 }

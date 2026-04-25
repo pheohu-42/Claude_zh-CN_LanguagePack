@@ -14,13 +14,25 @@ def load_source_keys():
         data = json.load(f)
     return data
 
+def _strip_icu_blocks(text):
+    """Remove ICU plural/select blocks from text to avoid false positives
+    when extracting placeholders. ICU branch content like {step}/{steps}
+    is translatable text, not placeholders to preserve."""
+    # Iteratively remove nested ICU blocks (plural/select can nest)
+    prev = None
+    while prev != text:
+        prev = text
+        # Match {var, plural/select, ...} including nested braces
+        # Simple approach: repeatedly strip the innermost ICU blocks
+        text = re.sub(
+            r'\{(\w+),\s*(plural|select)\s*,\s*[^{}]*(?:\{[^{}]*\}[^{}]*)*\}',
+            '', text)
+    return text
+
 def extract_placeholders(text):
+    cleaned = _strip_icu_blocks(text)
     results = set()
-    for m in re.finditer(r'\{([a-zA-Z_]\w*)\}', text):
-        pos = m.start()
-        after = text[pos + len(m.group(0)):].lstrip()
-        if after and after[0] == ',':
-            continue
+    for m in re.finditer(r'\{([a-zA-Z_]\w*)\}', cleaned):
         results.add(m.group(0))
     for m in re.finditer(r'%[sd]', text):
         results.add(m.group(0))

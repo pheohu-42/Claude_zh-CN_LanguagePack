@@ -1,0 +1,17 @@
+4b0titvGRH SRC: Your subscription includes a time-limited promotional discount. Your subscription will automatically renew at the discounted price of {discountedPrice
+4b0titvGRH TRN: 您的订阅包含限时促销折扣。您的订阅将以折扣价 {discountedPrice} / {billingInterval, select, yearly {年} monthly {月} other {月}}（加适用税费）自动续订，直至 {promoEndDate}，届时您将自动降回当前订阅计划，除非您
+
+D4fnLnODFp SRC: Show {count} more {count, plural, one {permission} other {permissions}}
+D4fnLnODFp TRN: 显示更多 {count} 个{count, plural, one {权限} other {权限}}
+
+EuLc9WeEh+ SRC: {count, plural, one {Skill} other {# Skills}}
+EuLc9WeEh+ TRN: {count, plural, one {技能} other {# 个技能}}
+
+LEbqykAkH9 SRC: {count, plural, one {App} other {# Apps}}
+LEbqykAkH9 TRN: {count, plural, one {应用} other {# 个应用}}
+
+NIeSu2J/3T SRC: Free for {value} {unit}{value, plural, one {} other {s}}
+NIeSu2J/3T TRN: 免费 {value} {unit}{value, plural, one {} other {}}
+
+Ni2cO3zLTo SRC: {count, plural, one {step} other {steps}}
+Ni2cO3zLTo TRN: {count, plural, one {步骤} other {步骤}}

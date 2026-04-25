@@ -70,7 +70,7 @@
   "AtL30+PDZZ": "Claude 需要麦克风权限",
   "BHrCNQSl+/": "USB",
   "Bx8SVIBqp8": "{kb}KB",
-  "C/K/kK/zlp": "Cowork 需要虚拟化支持。你的 Mac 不支持虚拟化。如果你当前在虚拟机（如 Parallels）中运行 macOS，可能需要启用"嵌套虚拟化"功能。",
+  "C/K/kK/zlp": "Cowork 需要虚拟化支持。你的 Mac 不支持虚拟化。如果你当前在虚拟机（如 Parallels）中运行 macOS，可能需要启用「嵌套虚拟化「功能。",
   "CDnvwxVwpJ": "以下扩展已被禁用，因为当前组织不允许使用：",
   "CLOvwqoy49": "管理员已禁用添加文件夹，如需访问请联系 IT 管理员。",
   "CizRPROPWo": "Claude 帮助",
@@ -119,7 +119,7 @@
   "L6+1AVXsU9": "文件夹未获允许",
   "L7zYnb34AH": "清除缓存出错",
   "LCWUQ/4Fu6": "查看",
-  "LN5XCdewH0": "这允许 Claude 直接在浏览器中操作网站。仅对信任的网站授予"始终允许"。",
+  "LN5XCdewH0": "这允许 Claude 直接在浏览器中操作网站。仅对信任的网站授予「始终允许「。",
   "LShRh03tIJ": "录制网络日志 (30秒)",
   "Lw6AWRo971": "技能文件过大，最大 30 MB。",
   "MNF5cWO3lm": "来自你的组织",
@@ -352,5 +352,6 @@
   "zAYm/Z684h": "帮助",
   "zTrDHxC7yZ": "BLE API 仅在桌面应用的开发者模式下可用，面向创客和开发者，不是正式支持的产品功能。",
   "zasatRyQg/": "在 Finder 中显示 Cowork 会话数据",
-  "ze7mxSJ8h8": "打开"
+  "ze7mxSJ8h8": "打开",
+  "mTUIZX4Qq2": "举个例子，我们制作了一个桌面宠物，它通过权限批准和与 Claude 的交互来维持生命。固件、构建说明和角色包指南可在 <a>claude-desktop-buddy 仓库</a>中找到。"
 }
