@@ -1,2 +1,0 @@
-SRC: {count, plural, one {# group} other {# groups}}
-TRN: 已停止命令

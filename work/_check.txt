@@ -1,4 +1,0 @@
-9iEUZavjVe SRC: {count} additional {tierLabel} {count, plural, one {seat} other {seats}}
-9iEUZavjVe TRN: {count} 个额外 {tierLabel} {count, plural, one {席位} other {席位}}
-9ETfN/j9gl SRC: No result — task {status, select, failed {failed} stopped {stopped} other {ended}}.
-9ETfN/j9gl TRN: 无结果 — 任务{status, select, failed {失败} stopped {已停止} other {已结束}}。
