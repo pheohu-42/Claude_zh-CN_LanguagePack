@@ -2,7 +2,8 @@
 param(
     [switch]$Uninstall,
     [switch]$Extract,
-    [switch]$NoRestart
+    [switch]$NoRestart,
+    [switch]$PauseAtEnd
 )
 
 Set-StrictMode -Version Latest
@@ -39,6 +40,15 @@ function Ensure-Administrator {
 
     Start-Process -FilePath "powershell.exe" -Verb RunAs -ArgumentList $argumentList | Out-Null
     exit
+}
+
+function Wait-BeforeExit {
+    if (-not $PauseAtEnd) {
+        return
+    }
+
+    Write-Host ""
+    [void](Read-Host "按回车关闭窗口")
 }
 
 function Write-Utf8File {
@@ -538,9 +548,13 @@ if ($Extract) {
 if ($NoRestart) {
     $scriptArgs += "-NoRestart"
 }
+if ($PauseAtEnd) {
+    $scriptArgs += "-PauseAtEnd"
+}
 
 Ensure-Administrator -Arguments $scriptArgs
 
+$exitCode = 0
 try {
     if ($Extract) {
         Extract-EnglishFiles
@@ -555,5 +569,10 @@ try {
 catch {
     Write-Host ""
     Write-Host "[错误] $($_.Exception.Message)" -ForegroundColor Red
-    exit 1
+    $exitCode = 1
 }
+finally {
+    Wait-BeforeExit
+}
+
+exit $exitCode

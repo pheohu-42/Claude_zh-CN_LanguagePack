@@ -8,7 +8,7 @@ if not exist "%SCRIPT%" (
     exit /b 1
 )
 if not exist "%PS_EXE%" set "PS_EXE=powershell.exe"
-"%PS_EXE%" -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT%" -Uninstall
+"%PS_EXE%" -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT%" -Uninstall -PauseAtEnd
 if errorlevel 1 (
     echo.
     echo Uninstaller script failed.
