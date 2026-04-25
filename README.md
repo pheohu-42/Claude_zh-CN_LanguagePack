@@ -5,29 +5,35 @@
 ## 前提
 
 - 已安装 [Claude Desktop](https://claude.ai/download)
-- 已安装 [Python](https://www.python.org/downloads/) 3.8+
+- Windows 10 / 11
 
 ## 快速安装
 
-1. **右键** `LanguagePack.bat` → **以管理员身份运行**
-2. 选择「安装中文语言包」
+1. 双击 `安装中文语言包.bat`
+2. 在 UAC 弹窗中点击「是」
 3. 等待安装完成，Claude 会自动重启
-4. 在 Claude 设置中确认语言已切换为中文
+4. 如有需要，在 Claude 设置中确认语言已切换为中文
 
-## 命令行用法
+## 快速卸载
 
-```bash
-# 安装（需管理员权限）
-python install.py install
+1. 双击 `卸载中文语言包.bat`
+2. 在 UAC 弹窗中点击「是」
+3. 等待卸载完成，Claude 会自动重启
 
-# 安装并自动重启 Claude
-python install.py install --auto-restart
+## 命令行用法（PowerShell）
+
+```powershell
+# 安装（默认行为，需管理员权限）
+powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1
 
 # 卸载，恢复英文
-python install.py uninstall
+powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Uninstall
+
+# 安装/卸载后不自动重启
+powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -NoRestart
 
 # 提取英文原文（开发/更新翻译用）
-python install.py extract
+powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 ```
 
 ## 工作原理
@@ -43,8 +49,9 @@ python install.py extract
 ## 目录结构
 
 ```
-├── LanguagePack.bat                    # 交互式菜单（安装/卸载/提取）
-├── install.py                          # 主脚本（install/uninstall/extract）
+├── 安装中文语言包.bat                  # 一键安装入口
+├── 卸载中文语言包.bat                  # 一键卸载入口
+├── LanguagePack.ps1                    # 主脚本（install/uninstall/extract）
 └── translated-zh-CN/                   # 翻译文件
     ├── ion-dist/zh-CN.json             # 主界面 (12,325 条)
     ├── desktop-shell/zh-CN.json        # 桌面外壳 (355 条)
@@ -59,16 +66,16 @@ python install.py extract
 - 如果选项不存在，说明 JS 补丁未生效，可能是 Claude 已更新，需要适配新版
 
 **脚本报权限错误？**
-- 必须以管理员身份运行
+- 会自动请求管理员权限，若被系统拦截请手动允许
 - WindowsApps 目录受系统保护，`takeown` + `icacls` 需要管理员权限
 
 **Claude 更新后中文消失？**
 - Claude 更新会覆盖 resources 目录，需要重新运行安装脚本
 - 如果新版 JS 变量名变化，脚本会自动尝试正则匹配
 
-**没有 Python？**
-- 从 [python.org](https://www.python.org/downloads/) 下载安装
-- 安装时勾选「Add Python to PATH」
+## 开发者说明
+
+- 更新翻译时，可运行 `LanguagePack.ps1 -Extract` 提取最新英文原文
 
 ## 许可
 
