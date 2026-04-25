@@ -1,6 +1,6 @@
 # Claude Desktop 简体中文语言包
 
-为 Claude Desktop (Windows) 的界面语言增加简体中文。已在 Claude 1.3883.0 的 Cowork 3P 模式测试可用。
+为 Claude Desktop (Windows) 的界面语言增加简体中文。已在 Claude 1.3883.0 的 3P 模式测试可用。
 
 ## 前提
 
@@ -13,7 +13,10 @@
 2. 双击 `安装中文语言包.bat`。如果界面卡住，可以按几下回车键。
 3. 在 管理员权限 弹窗中点击「是」
 4. 等待安装完成
-5. 在 Claude 设置中将切换为中文
+5. 打开 Claude ，在左下角设置中切换语言为中文
+
+开启Claude 3P模式与自定义推理端点：https://linux.do/t/topic/2032192
+使用自定义模型映射：https://linux.do/t/topic/2034445 
 
 ## 快速卸载
 
@@ -82,3 +85,7 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 ## 许可
 
 仅供个人学习使用。Claude Desktop 是 Anthropic 的产品，本项目与 Anthropic 无关。
+
+## 鸣谢
+简体中文包原型：https://linux.do/t/topic/2040184 by [RICK](https://linux.do/u/lbls888)
+Linux Do 社区：https://linux.do。学AI，上L站。
