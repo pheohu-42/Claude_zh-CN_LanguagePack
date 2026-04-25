@@ -91,4 +91,4 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 ## 鸣谢
 - 简体中文包原型：https://linux.do/t/topic/2040184 by [RICK](https://linux.do/u/lbls888)
 
-- Linux Do 社区：[![](https://ldo.betax.dev/badge/community)](https://linux.do/)。学AI，上L站。
+- [Linux Do 社区](https://linux.do/)：[![](https://ldo.betax.dev/badge/community)](https://linux.do/)。学AI，上L站。
