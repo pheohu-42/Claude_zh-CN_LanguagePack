@@ -312,6 +312,142 @@ function Update-Config {
     }
 }
 
+function Get-ClaudeApplicationId {
+    param(
+        [Parameter(Mandatory = $true)][string]$ClaudePath
+    )
+
+    $manifestPath = Join-Path $ClaudePath "AppxManifest.xml"
+    if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
+        return $null
+    }
+
+    try {
+        [xml]$manifest = Get-Content -LiteralPath $manifestPath -Raw
+        $application = @($manifest.Package.Applications.Application | Select-Object -First 1)[0]
+        if ($application -and $application.Id) {
+            return [string]$application.Id
+        }
+    }
+    catch {
+    }
+
+    return $null
+}
+
+function Get-ClaudePackageFamilyName {
+    param(
+        [Parameter(Mandatory = $true)][string]$ClaudePath
+    )
+
+    try {
+        $resolvedClaudePath = [System.IO.Path]::GetFullPath($ClaudePath).TrimEnd("\")
+        $pkg = Get-AppxPackage -Name Claude -ErrorAction Stop |
+            Sort-Object Version -Descending |
+            Where-Object {
+                $_.InstallLocation -and
+                ([System.IO.Path]::GetFullPath($_.InstallLocation).TrimEnd("\") -ieq $resolvedClaudePath)
+            } |
+            Select-Object -First 1
+
+        if ($pkg -and $pkg.PackageFamilyName) {
+            return [string]$pkg.PackageFamilyName
+        }
+    }
+    catch {
+    }
+
+    try {
+        [xml]$manifest = Get-Content -LiteralPath (Join-Path $ClaudePath "AppxManifest.xml") -Raw
+        $identityName = [string]$manifest.Package.Identity.Name
+        $folderName = Split-Path -Leaf $ClaudePath
+        if ($identityName -and ($folderName -match "__([^_\\]+)$")) {
+            return "$identityName`_$($Matches[1])"
+        }
+    }
+    catch {
+    }
+
+    return $null
+}
+
+function Get-ClaudeAppUserModelId {
+    param(
+        [Parameter(Mandatory = $true)][string]$ClaudePath
+    )
+
+    $packageFamilyName = Get-ClaudePackageFamilyName -ClaudePath $ClaudePath
+    $applicationId = Get-ClaudeApplicationId -ClaudePath $ClaudePath
+
+    if ($packageFamilyName -and $applicationId) {
+        return "$packageFamilyName!$applicationId"
+    }
+
+    return $null
+}
+
+function Start-ClaudeWithExplorer {
+    param(
+        [Parameter(Mandatory = $true)][string]$Target
+    )
+
+    try {
+        $argument = $Target
+        if ($Target -notlike "shell:*") {
+            $argument = "`"$Target`""
+        }
+
+        Start-Process -FilePath "explorer.exe" -ArgumentList $argument | Out-Null
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+function Start-ClaudeWithWmi {
+    param(
+        [Parameter(Mandatory = $true)][string]$ExePath
+    )
+
+    try {
+        $workingDirectory = Split-Path -Parent $ExePath
+        $result = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{
+            CommandLine      = "`"$ExePath`""
+            CurrentDirectory = $workingDirectory
+        }
+
+        return ($result.ReturnValue -eq 0)
+    }
+    catch {
+        return $false
+    }
+}
+
+function Start-ClaudeDetached {
+    param(
+        [Parameter(Mandatory = $true)][string]$ClaudePath
+    )
+
+    $appUserModelId = Get-ClaudeAppUserModelId -ClaudePath $ClaudePath
+    if ($appUserModelId) {
+        if (Start-ClaudeWithExplorer -Target "shell:AppsFolder\$appUserModelId") {
+            return $true
+        }
+    }
+
+    $exe = Join-Path $ClaudePath "app\claude.exe"
+    if (-not (Test-Path -LiteralPath $exe -PathType Leaf)) {
+        return $false
+    }
+
+    if (Start-ClaudeWithExplorer -Target $exe) {
+        return $true
+    }
+
+    return (Start-ClaudeWithWmi -ExePath $exe)
+}
+
 function Restart-Claude {
     try {
         Stop-Process -Name "claude" -Force -ErrorAction SilentlyContinue
@@ -326,11 +462,12 @@ function Restart-Claude {
         return
     }
 
-    $exe = Join-Path $claudePath "app\claude.exe"
-    if (Test-Path -LiteralPath $exe -PathType Leaf) {
-        Start-Process -FilePath $exe | Out-Null
+    if (Start-ClaudeDetached -ClaudePath $claudePath) {
         Start-Sleep -Seconds 3
         Write-Host "Claude Desktop 已重启"
+    }
+    else {
+        Write-Host "  [警告] 自动启动 Claude 失败，请手动打开 Claude Desktop" -ForegroundColor Yellow
     }
 }
 
