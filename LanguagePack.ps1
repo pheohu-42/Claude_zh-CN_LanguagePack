@@ -282,8 +282,8 @@ function Update-Config {
 
     $base = Join-Path ${env:LOCALAPPDATA} "Packages\Claude_pzs8sxrjxfjjc"
     $configPaths = @(
-        Join-Path $base "LocalCache\Roaming\Claude\config.json",
-        Join-Path $base "LocalCache\Roaming\Claude-3p\config.json"
+        (Join-Path $base "LocalCache\Roaming\Claude\config.json"),
+        (Join-Path $base "LocalCache\Roaming\Claude-3p\config.json")
     )
 
     foreach ($configPath in $configPaths) {
