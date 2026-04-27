@@ -29,6 +29,58 @@
 3. 在 管理员权限 弹窗中点击「是」
 4. 等待卸载完成
 
+
+
+## Cowork 使用教程
+
+### 一、已有官方付费订阅
+
+1. 打开 Claude Desktop。
+2. 登录你的 Claude 账号。
+3. 登录后，在左侧或主界面找到 **Cowork**即可
+
+### 二、3P 模式
+
+无付费订阅的账号登录后无法使用Cowork，需使用3P模式并设置自己的API端点。
+
+1. 打开 Claude Desktop，不要登录 Claude 账号
+
+2. 打开左上角菜单(三个横杠)：
+
+```text
+帮助 → 故障排除 → 启用开发者模式 (Help → Troubleshooting → Enable Developer Mode)
+```
+如果左上角菜单点不开，可以先点击邮箱输入框，再按 `Tab` 切换选定到菜单按钮并回车。
+
+4. 开启开发者模式后，打开：
+
+```text
+开发者 → 配置第三方推理 (Developer → Configure third-party inference)
+```
+
+5. 在connction页面填写你的第三方接口信息，包括：
+
+```text
+Gateway base URL：https://你的baseURL。 
+Gateway API key：你的密钥
+Model list：依次添加你想要的模型。如果不添加，Claude会自动获取。
+```
+<img width="50%" alt="image" src="https://github.com/user-attachments/assets/1e275fdf-1aac-4f4b-a9ad-23b71b49f101" />
+
+注意base URL结尾不要带/v1，否则会导致自动获取模型失败，仅显示legacy模型。只有本地API端点可以使用http，非本地API端点要求https。
+无须勾选"Skip login-mode chooser"。
+可按需在 Telemetry & updates 标签关闭前两项遥测。
+
+
+6. 填好后点击：
+
+```text
+本地应用 (Apply locally)
+```
+
+7. Claude Desktop 会重启，重启后正常使用Cowork即可。
+
+
 ## 命令行用法（PowerShell）
 
 ```powershell
@@ -71,8 +123,7 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 
 **安装后界面没变中文？**
 - 确认 Claude Desktop 已重启
-- 检查 Claude 设置 → 语言是否显示「中文(简体)」选项
-- 如果选项不存在，说明 JS 补丁未生效，可能是 Claude 已更新，需要适配新版
+- 检查 Claude 设置 → 语言是否已设置为「中文(简体)」
 
 **脚本报权限错误？**
 - 会自动请求管理员权限，若被系统拦截请手动允许
