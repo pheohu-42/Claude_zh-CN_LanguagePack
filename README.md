@@ -90,7 +90,11 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 
 仅供个人学习使用。Claude Desktop 是 Anthropic 的产品，本项目与 Anthropic 无关。
 
-## 鸣谢
+本项目采用 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0)（CC BY-NC-SA 4.0）授权。
+
+你可以在非商业目的下复制、分发、修改本项目，但必须保留原作者署名、注明修改内容，并以相同协议继续发布衍生版本。
+
+## 感谢
 - 简体中文包原型：https://linux.do/t/topic/2040184 by [RICK](https://linux.do/u/lbls888)
 
 - [Linux Do 社区](https://linux.do/)：[![](https://ldo.betax.dev/badge/community)](https://linux.do/)。学AI，上L站。
