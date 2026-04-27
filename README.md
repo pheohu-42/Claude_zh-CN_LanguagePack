@@ -18,10 +18,6 @@
 5. 等待安装完成
 6. 打开 Claude ，在左下角设置中切换语言为中文
 
-开启Claude 3P模式与自定义推理端点：https://linux.do/t/topic/2032192
-
-使用自定义模型映射：https://linux.do/t/topic/2034445 
-
 ## 快速卸载
 
 1. 完全关闭 Claude Desktop
@@ -147,5 +143,5 @@ powershell -ExecutionPolicy Bypass -File .\LanguagePack.ps1 -Extract
 
 ## 感谢
 - 简体中文包原型：https://linux.do/t/topic/2040184 by [RICK](https://linux.do/u/lbls888)
-
+- 使用教程： [开启Claude 3P模式与自定义推理端点](https://linux.do/t/topic/2032192) & [使用自定义模型映射](https://linux.do/t/topic/2034445)
 - [Linux Do 社区](https://linux.do/)：[![](https://ldo.betax.dev/badge/community)](https://linux.do/)。学AI，上L站。
