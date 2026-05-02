@@ -1,0 +1,73 @@
+"  to stop" = "  来结束";
+
+"  to stop." = "  来结束。";
+
+" from Claude" = " 来自 Claude";
+
+"Attach a file" = "添加文件";
+
+"Cancel" = "取消";
+
+"Claude needs Accessibility access so you can attach files" = "Claude 需要辅助功能权限，才能添加文件";
+
+"Claude needs Screen Capture access so you can share screenshots" = "Claude 需要屏幕录制权限，才能分享截图";
+
+"Click or drag to take a screenshot" = "点击或拖动来截屏";
+
+"Continue" = "继续";
+
+"Cowork is taking a moment to cleanly exit. This may take up to a minute." = "Cowork 正在安全退出，可能需要最多一分钟。";
+
+"Drag to take a screenshot" = "拖动以截屏";
+
+"Finishing up" = "正在收尾";
+
+"Keep chatting with Claude about..." = "继续和 Claude 聊聊……";
+
+"Needs additional permission" = "还需要更多权限";
+
+"New Chat" = "新建聊天";
+
+"Not currently connected to claude.ai" = "当前未连接到 claude.ai";
+
+"Not now" = "暂不";
+
+"Open in main window" = "在主窗口中打开";
+
+"Open System Settings and enable Accessibility access for Claude." = "打开系统设置，为 Claude 开启辅助功能权限。";
+
+"Open System Settings and enable Screen Capture access for Claude." = "打开系统设置，为 Claude 开启屏幕录制权限。";
+
+"Pasted Image" = "粘贴的图片";
+
+"Quick access prompts must be at least 3 characters" = "快捷提示词至少需要 3 个字符";
+
+"Quickly share content with Claude" = "快速与 Claude 分享内容";
+
+"Recent" = "最近";
+
+"Remove" = "移除";
+
+"Remove " = "移除 ";
+
+"Screen Recording Permission Required" = "需要屏幕录制权限";
+
+"Send " = "发送 ";
+
+"Send a screenshot of " = "发送这部分内容的截图：";
+
+"Send to new chat" = "发送到新聊天";
+
+"Speak to Claude, then press  " = "对 Claude 说话，然后按  ";
+
+"Take a screenshot" = "截取屏幕";
+
+"To capture screenshots, Clod needs permission to record your screen." = "要截取屏幕，Claude 需要获得屏幕录制权限。";
+
+"Transcribing..." = "正在转录……";
+
+"Turn on file sharing" = "开启文件共享";
+
+"Turn on screenshots" = "开启截屏";
+
+"What can I help you with today?" = "今天想让我帮你做什么？";
